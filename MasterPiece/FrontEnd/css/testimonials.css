@@ -1,0 +1,54 @@
+
+.testimonials .card {
+transition: transform 0.3s ease-in-out;
+}
+
+
+
+.testimonials .card:hover {
+transform: scale(1.08);
+box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+background-color: #ffffff; /* Dark background on hover */
+transition: 0.4s ease ;
+}
+
+/* .testimonials .card:hover,
+.testimonials .card:hover h5,
+.testimonials .card:hover p,
+.testimonials .card:hover small,
+.testimonials .card:hover .text-muted {
+color: white !important;
+} */
+
+.testimonials .card:hover .fa-star {
+color: white; /* Also make stars white */
+}
+
+
+
+.testimonials .card-img-top {
+width: 100%;
+height: 200px; /* Fixed height for consistency */
+object-fit: cover; /* Ensure the image covers the area fully */
+}
+
+.testimonials .badge {
+position: absolute;
+top: 20px;
+right: 20px;
+}
+
+.testimonials .card-body {
+position: relative;
+}
+
+.testimonials i.fa-star, 
+.testimonials i.fa-star-half-alt {
+color: #ffdd00; /* Bright yellow color for stars */
+}
+
+.testimonials .card-footer {
+background-color: #f8f9fa;
+border-top: none;
+}
+

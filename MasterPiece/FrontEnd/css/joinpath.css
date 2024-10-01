@@ -1,0 +1,81 @@
+
+
+h1 {
+    color: #2d7929;
+    font-weight: bold;
+}
+
+.path-step {
+    padding: 10px 15px;
+    font-weight: bold;
+    color: #2d7929;
+}
+
+.step-description {
+    padding: 15px;
+    border-bottom: 2px dashed #2d7929;
+    margin-bottom: 20px;
+    flex: 1;
+    height: 8em;
+}
+
+.step-number {
+    font-weight: bold;
+    color: #2d7929;
+    margin-right: 10px;
+}
+
+.step-text {
+    font-weight: normal;
+}
+
+
+
+.info-box {
+    background-color: #f9f9f9;
+    padding: 10px 15px;
+    border: 1px solid #2d7929;
+    border-radius: 5px;
+    font-size: 0.9rem;
+}
+#DescriptionOTitle{
+   font-size: 3em;
+   font-weight: 800; 
+   margin-bottom: 1em;
+}
+
+#booknowFinal{
+    background-color: green;
+    font-size: 1.2em;
+}
+
+
+
+.path-description {
+    text-align: justify;
+    font-size: 1rem;
+    line-height: 1.5;
+    /* text-align: center; */
+    width: 50%;
+    margin: 0 auto;
+}
+
+.col-md-8 {
+    display: block !important;
+    width: 100%;
+}
+
+#booknow {
+    margin-bottom: 50px;
+    margin-top: 50px;
+}
+#path-description {
+    margin-bottom: 75px ;
+}
+
+
+@media (max-width: 768px) {
+    .step-description {
+        flex: 1 1 100%;
+    }
+}

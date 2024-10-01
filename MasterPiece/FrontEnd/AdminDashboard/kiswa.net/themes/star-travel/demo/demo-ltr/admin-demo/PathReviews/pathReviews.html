@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<!-- Mirrored from kiswa.net/themes/star-travel/demo/demo-ltr/admin-demo/users-list.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 31 Jul 2024 09:22:29 GMT -->
+<head>
+	<title>Path Reviews</title>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="icon" href="../../images/logo.png" type="image/x-icon">
+
+	<!-- Framework Stylesheets Start-->
+
+	<style>
+		.loader {
+	position: fixed;
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	height: 100%;
+	z-index: 9999;
+	background: url(../images/loader-red.gif) center no-repeat #fff;
+}
+
+#pagination{
+	
+	margin-bottom: 50px;
+}
+	</style>
+	<link rel="stylesheet" href="../css/loader.css">
+
+	<!-- Bootstrap Stylesheet -->
+	<link rel="stylesheet" href="../css/bootstrap-5.3.2.min.css">
+
+
+	<!-- Data Tables Stylesheet -->
+	<link rel="stylesheet" type="text/css" href="../vendors/datatables/datatables.min.css">
+	<link rel="stylesheet" type="text/css" href="../vendors/datatables/Responsive-2.2.2/css/responsive.bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="../css/custom.datatables.css">
+
+
+	  <!-- Include SweetAlert2 CSS and JS -->
+	  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+	  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+	<!-- Framework Stylesheets End-->
+
+	<!-- Font Awsome Stylesheet -->
+	<link rel="stylesheet" href="../vendors/fontawesome5.7.2/css/all.min.css">
+
+	<!-- Custom Stylesheet Start-->
+
+	<link rel="stylesheet" type="text/css" href="../css/style.css">
+	<link rel="stylesheet" type="text/css" href="../css/responsive.css">
+	<link rel="stylesheet" href="../css/custom.css">
+
+	<!-- Custom Stylesheet End-->
+
+
+
+</head>
+
+<body>
+	<!--====== LOADER =====-->
+	<div class="loader"></div>
+	<!-- ===========wrapper============= -->
+	<div class="wrapper">
+
+		<!-- ===========Top-Bar============= -->
+		<div class="top-bar">
+			<nav class="navbar">
+				<button class="navbar-toggler d-block sideMenuToggler" type="button">
+					<span class="fa fa-bars"></span>
+				</button>
+
+				<ul class="ms-auto list-unstyled nav-list list-inline d-flex my-auto">
+					<li class="nav-item list-inline-item">
+						<form class="form-inline my-2 my-lg-0 d-none d-xl-flex">
+							<input class="form-control me-sm-2" type="search" placeholder="Search" aria-label="Search" />
+							<i class="fas fa-search"></i>
+						</form>
+					</li>
+					<li class="nav-item list-inline-item dropdown messages">
+						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+							aria-haspopup="true" aria-expanded="false">
+							<i class="far fa-envelope"></i>
+						</a>
+						<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+							<span>Messages (5)</span>
+							<div class="dropdown-divider"></div>
+							<a class="dropdown-item" href="#"><i class="far fa-envelope"></i>Your Order is
+								Placed<span>Lorem ipsum
+									dolor sit, amet consectetur adipisicing elit.
+									Nisi, maxime?</span>
+							</a>
+							<a class="dropdown-item" href="#"><i class="far fa-envelope-open"></i>New Message
+								Received<span>Lorem
+									ipsum dolor sit amet.</span></a>
+							<a class="dropdown-item bottom-margin" href="#"><i class="far fa-envelope-open"></i>Your
+								item is
+								Shipped<span>Lorem ipsum dolor sit amet consectetur adipisicing.</span></a>
+							<div class="dropdown-divider"></div>
+							<a href="#" class="btn mx-auto d-block">View All</a>
+						</div>
+					</li>
+					<li class="nav-item list-inline-item dropdown notifications">
+						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+							aria-haspopup="true" aria-expanded="false">
+							<i class="far fa-bell"></i>
+						</a>
+						<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+							<span>Notifications (258)</span>
+							<div class="dropdown-divider"></div>
+							<a class="dropdown-item" href="#"><i class="fas fa-cart-plus"></i>Your Order is
+								Placed<span>Lorem ipsum
+									dolor sit, amet consectetur adipisicing elit.
+									Nisi, maxime?</span>
+							</a>
+							<a class="dropdown-item" href="#"><i class="fas fa-sms"></i>New Message Received<span>Lorem
+									ipsum dolor
+									sit amet.</span></a>
+							<a class="dropdown-item bottom-margin" href="#"><i class="fas fa-glass-martini"></i>Your
+								item is
+								Shipped<span>Lorem ipsum dolor sit amet consectetur adipisicing.</span></a>
+							<div class="dropdown-divider"></div>
+							<a href="#" class="btn mx-auto d-block">View All</a>
+						</div>
+					</li>
+					<li class="nav-item list-inline-item dropdown profile">
+						<a class="nav-link" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+							aria-haspopup="true" aria-expanded="false">
+							<img src="../images/commenter-1.jpg" alt="" class="img-fluid rounded-circle" width="30px" />
+						</a>
+
+						<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+							<a class="dropdown-item" href="../Profile/viewProfile.html"><i class="fas fa-user-alt"></i>
+								<span>View Profile</span></a>
+							<a class="dropdown-item" href="../Profile/editProfile.html"><i class="fas fa-cog"></i>
+								<span>Edit Profile</span></a>
+							<a class="dropdown-item" href="../Profile/profileChangePassword.html"><i class="fas fa-unlock"></i>
+								<span>Change Password</span></a>
+							<a class="dropdown-item" href="#"><i class="fas fa-unlock"></i>
+								<span>Lock Screen</span></a>
+							<a href="#" class="btn d-block text-start"><i class="fas fa-power-off"></i>Logout</a>
+						</div>
+					</li>
+				</ul>
+			</nav>
+		</div><!-- End top-bar -->
+
+		 	<!-- =========== sidebar-left ============= -->
+			 <div class="sidebar-left">
+				<div class="sidebar-topbar text-center">
+					<i class="fas fa-hiking me-3"></i><span class="text">GoHiker</span>
+				</div> <!-- End sidebar-topbar -->
+		
+				<div class="side-menu">
+					<ul class="navbar-nav">
+						<li class="nav-item" id="dashboard-link">
+							<a href="../index.html" class="items-list first">
+								<span><i class="fa fa-home link-icon" data-bs-toggle="tooltip" data-html="true"
+										title="Dashboard"></i></span>
+								<span class="items-list-text">Dashboard</span>
+							</a>
+						</li>
+						<li class="nav-item">
+							<a href="#users" class="items-list " data-bs-toggle="collapse" aria-expanded="false">
+								<span><i class="fas fa-user-tie" data-bs-toggle="tooltip" data-html="true" title="Users"></i></span>
+								<span class="items-list-text">Users</span>
+								<span><i class="fa fa-chevron-down arrow"></i></span>
+							</a>
+							<div class="collapse sub-menu" id="users">
+								<!-- <a class="items-list1" href="../users-create-user.html">Create User</a> -->
+								<a class="items-list1" href="../Users/users.html">List</a>
+							</div><!-- End sub-menu -->
+						</li>
+						<li class="nav-item">
+							<a href="#paths" class="items-list " data-bs-toggle="collapse" aria-expanded="false">
+								<span><i class="fas fa-hiking" data-bs-toggle="tooltip" data-html="true" title="Paths"></i></span>
+								<span class="items-list-text">Paths</span>
+								<span><i class="fa fa-chevron-down arrow"></i></span>
+							</a>
+							<div class="collapse sub-menu" id="paths">
+								<a class="items-list1" href="../Paths/createNewPath.html">Create Path</a>
+								<a class="items-list1 " href="../Paths/paths.html">Paths List</a>
+								<a class="items-list1" href="../Paths/pathInfo.html">Paths Info</a>
+
+							</div><!-- End sub-menu -->
+						</li>
+		
+				  
+		
+						<li class="nav-item">
+							<a href="#bookings" class="items-list " data-bs-toggle="collapse" aria-expanded="false">
+								<span><i class="fas fa-calendar-alt" data-bs-toggle="tooltip" data-html="true" title="Checkpoints"></i></span>
+								<span class="items-list-text">Path Bookings</span>
+								<span><i class="fa fa-chevron-down arrow"></i></span>
+							</a>
+							<div class="collapse sub-menu" id="bookings">
+								<!-- <a class="items-list1" href="./AddNewCheckpoint.html">Create CheckPoints</a> -->
+								<a class="items-list1 " href="../bookings/bookings.html">Bookings List</a>
+							</div><!-- End sub-menu -->
+						</li>
+		
+		
+						<li class="nav-item">
+							<a href="#pathorders" class="items-list " data-bs-toggle="collapse" aria-expanded="false">
+								<span><i class="fas fa-credit-card" data-bs-toggle="tooltip" data-html="true" title="Path Orders"></i></span>
+								<span class="items-list-text">Path Orders</span>
+								<span><i class="fa fa-chevron-down arrow"></i></span>
+							</a>
+							<div class="collapse sub-menu" id="pathorders">
+								<!-- <a class="items-list1" href="./AddNewCheckpoint.html">Create CheckPoints</a> -->
+								<a class="items-list1 " href="../PathOrders/PathOrders.html">Path Orders List</a>
+							</div><!-- End sub-menu -->
+						</li>
+		
+						<li class="nav-item">
+							<a href="#pathreviews" class="items-list active" data-bs-toggle="collapse" aria-expanded="false">
+								<span><i class="fas fa-star" data-bs-toggle="tooltip" data-html="true" title="Path Reviews"></i></span>
+								<span class="items-list-text">Path Reviews</span>
+								<span><i class="fa fa-chevron-down arrow"></i></span>
+							</a>
+							<div class="collapse sub-menu" id="pathreviews">
+								<!-- <a class="items-list1" href="./AddNewCheckpoint.html">Create CheckPoints</a> -->
+								<a class="items-list1 active" href="../PathReviews/pathReviews.html">Path Reviews List</a>
+							</div><!-- End sub-menu -->
+						</li>
+		
+				   
+		
+						<li class="nav-item">
+							<a href="#checkpoints" class="items-list " data-bs-toggle="collapse" aria-expanded="false">
+								<span><i class="fas fa-map-marker-alt" data-bs-toggle="tooltip" data-html="true" title="Checkpoints"></i></span>
+								<span class="items-list-text">Checkpoints</span>
+								<span><i class="fa fa-chevron-down arrow"></i></span>
+							</a>
+							<div class="collapse sub-menu" id="checkpoints">
+								<a class="items-list1" href="../checkpoints/AddNewCheckpoint.html">Create CheckPoints</a>
+								<a class="items-list1 " href="../checkpoints/checkpoints.html">CheckPoints List</a>
+							</div><!-- End sub-menu -->
+						</li>
+		
+						
+						<li class="nav-item">
+							<a href="#destinations" class="items-list " data-bs-toggle="collapse" aria-expanded="false">
+								<span><i class="fas fa-map" data-bs-toggle="tooltip" data-html="true" title="Path Reviews"></i></span>
+								<span class="items-list-text">Destinations</span>
+								<span><i class="fa fa-chevron-down arrow"></i></span>
+							</a>
+							<div class="collapse sub-menu" id="destinations">
+								<a class="items-list1" href="../PopularDestination/addnewDestination.html">Create Destination</a>
+								<a class="items-list1 " href="../PopularDestination/popularDestination.html">Destinations List</a>
+							</div><!-- End sub-menu -->
+						</li>
+		
+						<li class="nav-item">
+							<a href="#tripdesign" class="items-list " data-bs-toggle="collapse" aria-expanded="false">
+								<span><i class="fas fa-calendar-check" data-bs-toggle="tooltip" data-html="true" title="Trip Design"></i></span>
+								<span class="items-list-text">Trip Design Bookings</span>
+								<span><i class="fa fa-chevron-down arrow"></i></span>
+							</a>
+							<div class="collapse sub-menu" id="tripdesign">
+								<!-- <a class="items-list1" href="./addnewDestination.html">Create Destination</a> -->
+								<a class="items-list1 " href="../TripDesign/TripDesign.html">Trip Design List</a>
+							</div><!-- End sub-menu -->
+						</li>
+		
+						<li class="nav-item">
+							<a href="#guideapplication" class="items-list  " data-bs-toggle="collapse" aria-expanded="false">
+								<span><i class="fas fa-file-signature" data-bs-toggle="tooltip" data-html="true" title="guide application"></i></span>
+								<span class="items-list-text">Guide Application</span>
+								<span><i class="fa fa-chevron-down arrow"></i></span>
+							</a>
+							<div class="collapse sub-menu" id="guideapplication">
+								<!-- <a class="items-list1" href="../GuideApplication/editguideapplication.html">Edit Guide Application</a> -->
+								<a class="items-list1 " href="../GuideApplication/guideApplication.html">Guide Application List</a>
+							</div><!-- End sub-menu -->
+						</li>
+		
+						
+						<li class="nav-item">
+							<a href="#tourguides" class="items-list " data-bs-toggle="collapse" aria-expanded="false">
+								<span><i class="fas fa-user-check" data-bs-toggle="tooltip" data-html="true" title="tour guides"></i></span>
+								<span class="items-list-text">Tour Guides</span>
+								<span><i class="fa fa-chevron-down arrow"></i></span>
+							</a>
+							<div class="collapse sub-menu" id="tourguides">
+								<!-- <a class="items-list1" href="editTourGuide.html">Edit Tour Guide</a> -->
+								<a class="items-list1 " href="../TourGuides/tourGuides.html">Tour Guide List</a>
+							</div><!-- End sub-menu -->
+						</li>
+		
+								
+						<li class="nav-item">
+							<a href="#guidebooking" class="items-list " data-bs-toggle="collapse" aria-expanded="false">
+								<span><i class="fas fa-clipboard-check" data-bs-toggle="tooltip" data-html="true" title="guide booking"></i></span>
+								<span class="items-list-text">Guide Bookings</span>
+								<span><i class="fa fa-chevron-down arrow"></i></span>
+							</a>
+							<div class="collapse sub-menu" id="guidebooking">
+								<!-- <a class="items-list1" href="./editTourGuide.html">Edit Tour Guide</a> -->
+								<a class="items-list1 " href="../GuideBookings/guideBookings.html">Guide Bookings List</a>
+							</div><!-- End sub-menu -->
+						</li>
+		
+						<li class="nav-item">
+							<a href="#guideorders" class="items-list " data-bs-toggle="collapse" aria-expanded="false">
+								<span><i class="fas fa-shopping-cart" data-bs-toggle="tooltip" data-html="true" title="guide orders"></i></span>
+								<span class="items-list-text">Guide Orders</span>
+								<span><i class="fa fa-chevron-down arrow"></i></span>
+							</a>
+							<div class="collapse sub-menu" id="guideorders">
+								<!-- <a class="items-list1" href="./editTourGuide.html">Edit Tour Guide</a> -->
+								<a class="items-list1 " href="../GuideOrders/guideOrders.html">Guide Orders List</a>
+							</div><!-- End sub-menu -->
+						</li>
+		
+						<li class="nav-item">
+							<a href="#guidereviews" class="items-list " data-bs-toggle="collapse" aria-expanded="false">
+								<span><i class="fas fa-pen" data-bs-toggle="tooltip" data-html="true" title="guide reviews"></i></span>
+								<span class="items-list-text">Guide Reviews</span>
+								<span><i class="fa fa-chevron-down arrow"></i></span>
+							</a>
+							<div class="collapse sub-menu" id="guidereviews">
+								<!-- <a class="items-list1" href="./addNewCoupon.html">Add New Coupon</a> -->
+								<a class="items-list1 " href="../GuideReviews/guideReviews.html">Guid Reviews List</a>
+							</div><!-- End sub-menu -->
+						</li>
+		
+						<li class="nav-item">
+							<a href="#contactus" class="items-list" data-bs-toggle="collapse" aria-expanded="false">
+								<span><i class="fas fa-headset" data-bs-toggle="tooltip" data-html="true" title="contact us"></i></span>
+								<span class="items-list-text">Contact Us</span>
+								<span><i class="fa fa-chevron-down arrow"></i></span>
+							</a>
+							<div class="collapse sub-menu" id="contactus">
+								<!-- <a class="items-list1" href="./editContactUs.html">Edit Contact Us</a> -->
+								<a class="items-list1 " href="../ContactUs/contactUs.html">Contact Us List</a>
+							</div><!-- End sub-menu -->
+						</li>
+						
+						<li class="nav-item">
+							<a href="#coupons" class="items-list " data-bs-toggle="collapse" aria-expanded="false">
+								<span><i class="fas fa-percent" data-bs-toggle="tooltip" data-html="true" title="Coupons"></i></span>
+								<span class="items-list-text">Coupons</span>
+								<span><i class="fa fa-chevron-down arrow"></i></span>
+							</a>
+							<div class="collapse sub-menu" id="coupons">
+								<a class="items-list1" href="../Coupons/addNewCoupon.html">Add New Coupon</a>
+								<a class="items-list1 " href="../Coupons/Coupons.html">Coupons List</a>
+							</div><!-- End sub-menu -->
+						</li>
+		
+						<li class="nav-item">
+							<a href="#admins" class="items-list " data-bs-toggle="collapse" aria-expanded="false">
+								<span><i class="fas fa-user-secret" data-bs-toggle="tooltip" data-html="true" title="Coupons"></i></span>
+								<span class="items-list-text">Admins</span>
+								<span><i class="fa fa-chevron-down arrow"></i></span>
+							</a>
+							<div class="collapse sub-menu" id="admins">
+								<a class="items-list1" href="../Admins/createNewAdmin.html">Add New Admin</a>
+								<a class="items-list1 " href="../Admins/admins.html">Admins List</a>
+							</div><!-- End sub-menu -->
+						</li>
+		
+		
+						<li class="nav-item">
+							<a href="#profile" class="items-list" data-bs-toggle="collapse" aria-expanded="false">
+								<span><i class="fas fa-user-circle" data-bs-toggle="tooltip" data-html="true" title="Profile"></i></span>
+								<span class="items-list-text">Profile</span>
+								<span><i class="fa fa-chevron-down arrow"></i></span>
+							</a>
+							<div class="collapse sub-menu" id="profile">
+								<a class="items-list1" href="../Profile/viewProfile.html">View Profile</a>
+								<a class="items-list1" href="../Profile/editProfile.html">Edit Profile</a>
+								<a class="items-list1" href="../Profile/profileChangePassword.html">Change Password
+		
+								</a>
+							</div><!-- End sub-menu -->
+						</li>
+						
+		
+		
+		
+					
+					</ul>
+				</div><!-- End side-menu -->
+				<div class="side-bar-bottom">
+					<ul class="list-unstyled">
+						<li class="list-inline-item" data-bs-toggle="tooltip" data-html="true" title="Edit Profile"><a
+								href="profile-edit-profile.html"><i class="fas fa-cog"></i></a></li>
+						<li class="list-inline-item" data-bs-toggle="tooltip" data-html="true" title="Change Password"><a
+								href="profile-change-password.html"><i class="fas fa-key"></i></li>
+						<li class="list-inline-item" data-bs-toggle="tooltip" data-html="true" title="Lockscreen"><a href="#"><i
+									class="fas fa-unlock"></i></a></li>
+						<li class="list-inline-item" data-bs-toggle="tooltip" data-html="true" title="Logout"><a href="#"><i
+									class="fas fa-power-off"></i></a></li>
+					</ul>
+				</div><!-- end side-bar-bottom -->
+			</div><!-- end sidebar-left --><!-- end sidebar-left -->
+
+
+		<!-- ===========Innerpage-wrapper============= -->
+		<section>
+			<div class="content listing-content users-list">
+				<div class="in-content-wrapper">Path Reviews</div>
+					<div class="row no-gutters">
+
+						<div class="col">
+							<div class="heading-messages">
+								<h3>Path Reviews</h3>
+							</div><!-- End heading-messages -->
+						</div><!-- End column -->
+						<div class="col-md-4">
+							<div class="breadcrumb">
+								<div class="breadcrumb-item"><i class="fas fa-angle-right"></i><a href="#">Path Reviews</a>
+								</div>
+								<div class="breadcrumb-item active"><i class="fas fa-angle-right"></i>Path Reviews List
+								</div>
+							</div><!-- end breadcrumb -->
+						</div><!-- End column -->
+					</div><!-- end row -->
+
+					<div class="box">
+						<div class="row no-gutters">
+							<div class="col-auto me-auto text-start pe-0">
+								<div class="add-new">
+									<!-- <a href="createnewpath.html">Add New<i class="fas fa-plus"></i></a> -->
+								</div><!-- End add-new-->
+							</div><!-- End column-->
+							<div class="col text-end">
+								<div class="tools-btns">
+									<a href="#"><i class="fas fa-print" data-bs-toggle="tooltip" data-html="true" title="Print"></i></a>
+									<a href="#"><i class="fas fa-file-pdf" data-bs-toggle="tooltip" data-html="true" title="Pdf"></i></a>
+									<a href="#"><i class="fas fa-file-excel" data-bs-toggle="tooltip" data-html="true"
+											title="Excel"></i></a>
+								</div><!-- End tool-btns-->
+							</div><!-- End text-end-->
+
+						</div><!-- end row -->
+						<div class="row no-gutters">
+							<div class="col-12 table-responsive">
+								<table id="reviewsTable" class="table table-hover responsive listing">
+                                    <thead>
+                                        <tr>
+                                            <th>Review Id</th>
+                                            <th>User Id</th>
+                                            <th>Path Id</th>
+                                            <th>Rating</th>
+                                            <th>Comment</th>
+                                            <th>Review Date</th>
+											<th>Action</th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody id="table">
+                                        <tr>
+                                            <td>1</td>
+                                            <td>1</td>
+                                            <td>3</td>
+                                            <td>5</td>
+                                            <td>Great path! Had an amazing time.</td>
+                                            <td>2022-03-03</td>
+                                      
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                
+							</div><!-- end column -->
+						</div><!-- end row -->
+
+								<!-- Pagination controls -->
+								<div id="pagination" class="d-flex justify-content-center mt-4"></div>
+							</div><!-- end container -->
+	
+					</div><!-- end box -->
+				</div><!-- end in-content-wrapper -->
+			</div><!-- end users-list -->
+		</section>
+		<!-- ===========End Innerpage-wrapper============= -->
+
+	</div><!-- end wrapper -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<!-- Optional JavaScript, Not optional it's need too -->
+	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	
+	<script src="../js/jquery-3.3.1.min.js"></script>
+	<script src="../js/popper.min.js"></script>
+	<script src="../js/bootstrap-5.3.2.min.js"></script>
+	
+	<script src="../vendors/datatables/datatables.min.js"></script>
+
+
+	<script src="../js/customscriptfile.js"></script>
+
+	<!-- Page Scripts Ends -->
+
+	<script>
+		$(document).ready(function () {
+			$('#example').DataTable();
+		});
+	</script>
+	<script src="pathReviews.js"></script>
+</body>
+
+
+<!-- Mirrored from kiswa.net/themes/star-travel/demo/demo-ltr/admin-demo/users-list.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 31 Jul 2024 09:22:30 GMT -->
+</html>

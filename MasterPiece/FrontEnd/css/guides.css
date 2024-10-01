@@ -1,0 +1,26 @@
+/* Ensure all guide items have the same height */
+#guidesContainer{
+    display: flex !important;
+    justify-content: space-around;
+    flex-direction: row !important;
+}
+.guide-item {
+display: flex;
+flex-direction: column;
+height: 100%;
+}
+
+/* Set a fixed height for images and make them cover the available space */
+.guide-img img {
+height: 300px; /* Adjust this value to the desired image height */
+object-fit: cover;
+width: 100%;
+}
+
+/* Ensure the guide title fills the remaining space and aligns content at the bottom */
+.guide-title {
+flex-grow: 1;
+display: flex;
+flex-direction: column;
+justify-content: flex-end;
+}
