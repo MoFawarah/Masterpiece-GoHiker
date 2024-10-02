@@ -288,6 +288,7 @@ public partial class MyDbContext : DbContext
             entity.Property(e => e.AltPhone)
                 .HasMaxLength(50)
                 .HasColumnName("altPhone");
+            entity.Property(e => e.InvoceImg).HasColumnName("invoceImg");
             entity.Property(e => e.PaymentDate)
                 .HasDefaultValueSql("(getdate())")
                 .HasColumnType("datetime");

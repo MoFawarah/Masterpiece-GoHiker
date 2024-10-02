@@ -55,9 +55,8 @@ namespace MasterpieceBackEnd.Controllers
 
         [HttpPost("CreateNewPathOrder")]
 
-        public IActionResult CreateNewPathOrder([FromForm] PathOrderRequestDTO orderDTO)
+        public async Task<IActionResult> CreateNewPathOrder([FromForm] PathOrderRequestDTO orderDTO)
         {
-
             var newPathOrder = new PathOrder
             {
                 UserId = orderDTO.UserId,
@@ -69,7 +68,33 @@ namespace MasterpieceBackEnd.Controllers
                 AltPhone = orderDTO.AltPhone,
                 TransactionId = orderDTO.TransactionId,
 
+
             };
+
+
+            var uploadFolder = @"C:\Users\Orange\Desktop\Masterpiece\MasterPiece\FrontEnd\Uploads";
+
+
+            if (!Directory.Exists(uploadFolder))
+            {
+                Directory.CreateDirectory(uploadFolder);
+            }
+
+            if (orderDTO.InvoceImg != null)
+            {
+
+                var ImageFile = System.IO.Path.Combine(uploadFolder, orderDTO.InvoceImg.FileName);
+
+
+                using (var stream = new FileStream(ImageFile, FileMode.Create))
+                {
+                    await orderDTO.InvoceImg.CopyToAsync(stream);
+                }
+                newPathOrder.InvoceImg = orderDTO.InvoceImg.FileName;
+            }
+
+
+
 
             _db.PathOrders.Add(newPathOrder);
             _db.SaveChanges();
@@ -77,7 +102,16 @@ namespace MasterpieceBackEnd.Controllers
 
             var pathBooking = _db.Bookings.Where(b => b.BookingId == newPathOrder.BookingId).FirstOrDefault();
 
-            pathBooking.Completed = "Yes";
+            if (orderDTO.PaymentMethod == "cliqEWallet")
+            {
+                pathBooking.Completed = "No";
+            }
+            else
+            {
+                pathBooking.Completed = "Yes";
+            }
+
+
             _db.Bookings.Update(pathBooking);
             _db.SaveChanges();
 
@@ -100,6 +134,23 @@ namespace MasterpieceBackEnd.Controllers
 
 
             return Ok(response);
+        }
+
+        [HttpPut("UpdateOrder/{id}")]
+        public IActionResult UpdateOrder(int id, [FromBody] PathOrderUpdateDTO orderDTO)
+        {
+            var pathOrder = _db.PathOrders.Where(p => p.OrderId == id).FirstOrDefault();
+            if (pathOrder == null)
+            {
+                return BadRequest("Order Not Found");
+            }
+
+            pathOrder.TransactionId = orderDTO.TransactionId;
+            _db.PathOrders.Update(pathOrder);
+            _db.SaveChanges();
+
+            return Ok(pathOrder);
+
         }
     }
 }

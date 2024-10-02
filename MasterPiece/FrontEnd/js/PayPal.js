@@ -1,6 +1,9 @@
 
 
 
+let orderId = localStorage.getItem("orderId")
+
+
 function initPayPalButton() {
     paypal.Buttons({
         style: {
@@ -28,6 +31,39 @@ function initPayPalButton() {
 
                 const transactionId = orderData.id;
                 localStorage.setItem("transactionId", transactionId);
+
+                let url = `https://localhost:44360/api/PathOrder/UpdateOrder/${orderId}`
+
+                //from body update api method
+                fetch(url, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        transactionId: transactionId
+                    })
+                })
+                .then(response => {
+                    if (response.ok) {
+                        
+                        localStorage.removeItem('orderId');
+                        localStorage.removeItem('TotalPrice');
+                        localStorage.removeItem('PaymentMethod');
+                        localStorage.removeItem('bookingId');
+                        localStorage.removeItem('originalPrice');
+                        localStorage.removeItem('pathId');
+                        localStorage.removeItem('phoneNumber');
+                        localStorage.removeItem('pricePerPerson');
+
+                        console.log('Order updated successfully');
+                    } else {
+                        alert('Failed to update order');
+                    }
+                })
+                
+                   
+
 
                 
                 // Show a success message

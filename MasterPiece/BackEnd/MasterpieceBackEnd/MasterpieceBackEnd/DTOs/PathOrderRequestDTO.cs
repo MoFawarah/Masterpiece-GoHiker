@@ -16,6 +16,9 @@
         public string? AltPhone { get; set; }
         public string? TransactionId { get; set; }
 
+        public IFormFile? InvoceImg { get; set; }
+
+
 
     }
 }

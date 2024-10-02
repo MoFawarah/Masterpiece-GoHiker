@@ -1,7 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Profile</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+
     <meta charset="utf-8">
     <title>GoHiker - Step Into the Wild</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -23,10 +28,8 @@
         }
     </style>
 </head>
-
-
-
 <body>
+
 
     <!-- Announcement Bar Start -->
     <div class="bg-dark text-center text-dark py-2">
@@ -109,7 +112,7 @@
 
     <div class="container-fluid bg-breadcrumb">
         <div class="container text-center py-5" style="max-width: 900px;">
-            <h3 class="text-white display-3 mb-4">Profile</h1>
+            <h3 class="text-white display-3 mb-4">Edit Profile</h1>
                 <!-- <ol class="breadcrumb justify-content-center mb-0">
             <li class="breadcrumb-item"><a href="index.html">Home</a></li>
             <li class="breadcrumb-item"><a href="#">Pages</a></li>
@@ -124,7 +127,50 @@
 
 
 
-    <div id="profile-container" class="container d-flex align-items-center" style="height: 100vh; overflow: auto;"></div>
+
+
+
+
+
+
+
+
+
+
+
+    
+    <div class="container mt-5">
+        <h2>Edit Profile</h2>
+        <form id="edit-profile-form">
+            <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone</label>
+                <input type="text" id="phone" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="city">City</label>
+                <input type="text" id="city" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="imageFile">Profile Image</label>
+                <input type="file" id="imageFile" class="form-control">
+            </div>
+            <button type="submit" class="btn btn-primary">Save Changes</button>
+
+            <button type="button" class="btn btn-secondary" onclick="window.location.href='userProfile.html'">Cancel</button>
+
+        </form>
+    </div>
+
+
+    <br /><br /><br /><br>
 
 
 
@@ -255,7 +301,17 @@
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
     <script src="js/all.js"></script>
-    <script src="js/profileInfo.js"></script>
-</body>
 
+
+
+
+
+
+
+
+
+
+
+    <script src="js/editProfile.js"></script>
+</body>
 </html>

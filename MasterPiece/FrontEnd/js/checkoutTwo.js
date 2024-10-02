@@ -3,7 +3,6 @@
 const userId = localStorage.getItem("userId");
 const bookingId = localStorage.getItem("bookingId");
 const totalPrice = localStorage.getItem("TotalPrice");
-const paymentMethod = localStorage.getItem("PaymentMethod");
 const alternativePhone = document.getElementById("lternativePhone");
 
 ////////////// end of for order creation ///////////////
@@ -35,7 +34,11 @@ async function GetCurrentUser() {
     serviceType.value = "Path Order";
 
     const amount = document.getElementById("amount");
-    amount.value = totalPrice;
+    if(totalPrice !== null) 
+    {
+      amount.value = totalPrice;
+    }
+    
   }
 }
 
@@ -51,17 +54,40 @@ form.addEventListener("submit", async function (e) {
 
   let formData = new FormData();
 
-  if (paymentMethod == "payPal")
-  {
+  
     formData.append("userId", userId);
     formData.append("bookingId", bookingId);
     formData.append("totalAmount", totalPrice);
-    formData.append("paymentMethod", paymentMethod);
-    formData.append("paymentStatus", "Completed");
     formData.append("paymentDate", new Date().toISOString());
     formData.append("altPhone", alternativePhone.value);
 
+    let fileInput = document.getElementById("receiptUpload");
+    if (fileInput.files.length > 0) {
+      formData.append("InvoceImg", fileInput.files[0]);
+     
   }
+
+  let paymentMethod = localStorage.getItem("PaymentMethod")
+
+  if (paymentMethod == "cliqEWallet")
+  {
+    formData.append("paymentMethod", "cliqEWallet");
+
+    formData.append("paymentStatus", "Pending");
+  }
+  else if (paymentMethod == "payPal") {
+    formData.append("paymentMethod", "PayPal");
+    formData.append("paymentStatus", "Completed");
+  }
+
+  else {
+    formData.append("paymentMethod", "creditCard");
+    formData.append("paymentStatus", "Completed");
+  }
+
+  
+
+
 
 
 
@@ -75,8 +101,24 @@ form.addEventListener("submit", async function (e) {
   
   if (response.ok)
   {
-    alert('You will be redirected to paypal to complete the payment!');
-    window.location.href = "../../FrontEnd/Paypal.html";
+    const responseData = await response.json();
+   
+
+    if (paymentMethod == "payPal")
+    {
+      localStorage.setItem("orderId", responseData.orderId)
+      alert('You will be redirected to paypal to complete the payment!');
+      window.location.href = "../../FrontEnd/Paypal.html";
+    }
+    else {
+      alert('Order Created Successfully');
+
+
+      window.red.href = "../../FrontEnd/allPaths.html";
+
+    }
+
+   
   }
 
 else 

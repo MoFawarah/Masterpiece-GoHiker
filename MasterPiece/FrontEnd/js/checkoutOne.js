@@ -29,12 +29,14 @@ async function getPathDetails() {
     const url = `https://localhost:44360/api/Paths/GetPathById/${pathId}`;
     const response = await fetch(url);
     const data = await response.json();
-
+    if (response.ok){
     localStorage.setItem("pricePerPerson", data.pricePerPerson);
     pathName.value = data.pathName;
     howManyHikers.value = 1; // Set initial number of hikers to 1
 
     updateTotalPrice(); // Initialize the total price based on default hikers count
+
+    }
 }
 
 function updateTotalPrice() {

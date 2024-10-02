@@ -23,6 +23,8 @@ public partial class PathOrder
 
     public string? TransactionId { get; set; }
 
+    public string? InvoceImg { get; set; }
+
     public virtual Booking? Booking { get; set; }
 
     public virtual User? User { get; set; }

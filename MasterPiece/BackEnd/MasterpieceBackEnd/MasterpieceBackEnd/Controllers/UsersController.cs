@@ -42,7 +42,17 @@ namespace MasterpieceBackEnd.Controllers
         [HttpGet("GetUserById/{id}")]
         public IActionResult GetUserById(int id)
         {
-            var user = _db.Users.Where(u => u.UserId == id).FirstOrDefault();
+            var user = _db.Users.Where(u => u.UserId == id).Select(u => new UserProfileResponseDTO
+            {
+                UserId = u.UserId,
+                Name = u.Name,
+                Email = u.Email,
+                PhoneNumber = u.PhoneNumber,
+                City = u.City,
+                ImageFileName = u.ImageFileName,
+
+            }).FirstOrDefault();
+
             if (user == null)
             {
                 return NotFound($"No user found with id {id}");
@@ -51,6 +61,73 @@ namespace MasterpieceBackEnd.Controllers
             return Ok(user);
 
 
+        }
+
+
+
+        [HttpPut("EditUser/{id}")]
+        public async Task<IActionResult> EditUser(int id, [FromForm] UserProfileUpdateDTO userDTO)
+        {
+
+            var user = _db.Users.Where(u => u.UserId == id).FirstOrDefault();
+
+
+
+            var uploadFolder = @"C:\Users\Orange\Desktop\Masterpiece\MasterPiece\FrontEnd\Uploads";
+
+
+
+            if (!Directory.Exists(uploadFolder))
+            {
+                Directory.CreateDirectory(uploadFolder);
+            }
+
+            if (userDTO.ImageFileName != null)
+            {
+
+                var ImageFile = System.IO.Path.Combine(uploadFolder, userDTO.ImageFileName.FileName);
+
+
+                using (var stream = new FileStream(ImageFile, FileMode.Create))
+                {
+                    await userDTO.ImageFileName.CopyToAsync(stream);
+                }
+                user.ImageFileName = userDTO.ImageFileName.FileName;
+
+            }
+
+
+
+
+
+            if (user == null)
+            {
+                return BadRequest("User Not Found");
+            }
+
+            user.Name = userDTO.Name;
+            user.Email = userDTO.Email;
+            user.PhoneNumber = userDTO.PhoneNumber;
+            user.City = userDTO.City;
+
+
+
+
+
+            _db.Users.Update(user);
+            _db.SaveChanges();
+
+            var response = new
+            {
+                user.Name,
+                user.Email,
+                user.PhoneNumber,
+                user.City,
+                user.ImageFileName,
+            };
+
+
+            return Ok(response);
         }
 
 
