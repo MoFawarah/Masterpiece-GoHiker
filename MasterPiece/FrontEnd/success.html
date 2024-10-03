@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+
+
+
+<style>
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #6dd5ed, #2193b0); /* Simple gradient background */
+            color: #fff;
+            text-align: center;
+        }
+
+        .thank-you-message {
+            background-color: rgba(255, 255, 255, 0.1); /* Light transparent overlay */
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 1.2rem;
+        }
+ 
+</style>
+
+
+
+
+
+</head>
+<body>
+    
+
+
+    <div class="thank-you-message">
+        <h1>Thank You for Your Payment!</h1>
+        <p>Your transaction was successful. You will be redirected shortly.</p>
+    </div>
+
+
+
+
+
+
+
+    <script>
+        // On the success page, retrieve the session ID from the URL
+const urlParams = new URLSearchParams(window.location.search);
+const sessionId = urlParams.get("session_id");
+let orderId = localStorage.getItem("orderId")
+if (sessionId) {
+    // Make a request to retrieve the session details using session_id
+    fetch(`https://localhost:44360/api/Payment/get-checkout-session/${sessionId}`)
+        .then(response => response.json())
+        .then(session => {
+            const transactionId = session.payment_intent; // Retrieve transaction ID from session
+            localStorage.setItem("stripeTransactionId", transactionId); // Store the transaction ID in localStorage
+            console.log("Transaction ID:", transactionId);
+
+
+            let url = `https://localhost:44360/api/PathOrder/UpdateOrder/${orderId}`
+        
+                // From body update API method
+                fetch(url, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        transactionId: transactionId
+                    })
+                })
+
+            // Redirect to homepage or display success message
+            Swal.fire({
+              icon: 'success',
+              title: 'Order Confirmed',
+              text: `Get ready for a memorable hiking adventure!`,
+              confirmButtonColor: '#13357b',
+            }).then(() => {
+                localStorage.removeItem("orderId")
+                localStorage.removeItem("PaymentMethod")
+                localStorage.removeItem("TotalPrice")
+                localStorage.removeItem("bookingId")
+                localStorage.removeItem("originalPrice")
+                localStorage.removeItem("pathId")
+                localStorage.removeItem("pricePerPerson")
+                localStorage.removeItem("stripeTransactionId")
+                
+              window.location.replace("/FrontEnd/index.html");
+            });
+        })
+        .catch(error => {
+            console.error("Error fetching session details:", error);
+        });
+}
+
+    </script>
+</body>
+</html>

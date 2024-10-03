@@ -179,5 +179,72 @@ namespace MasterpieceBackEnd.Controllers
             return Ok(new { Token = token, user.UserId });
 
         }
+
+
+        [HttpPut("EditPasswordByUserId/{id}")]
+        public IActionResult EditPasswordByUserId(int id, [FromForm] EditPasswordRequestDTO uDTO)
+        {
+            var user = _db.Users.Where(u => u.UserId == id).FirstOrDefault();
+            byte[] passwordHash;
+            byte[] salt;
+
+            PasswordHasher.CreatePasswordHash(uDTO.newPassword, out passwordHash, out salt);
+
+
+            if (user.Password != uDTO.oldPassword)
+            {
+                return BadRequest("Old Password Not Correct");
+            }
+
+            user.Password = uDTO.newPassword;
+            user.PasswordHash = passwordHash;
+            user.PasswordSalt = salt;
+
+
+
+
+            _db.Users.Update(user);
+            _db.SaveChanges();
+
+            return Ok(user);
+
+
+
+
+
+
+        }
+
+
+        [HttpGet("GetUserOrderHistory/{id}")]
+        public IActionResult GetUserOrderHistory(int id)
+        {
+            var userHistory = _db.PathOrders.Where(po => po.UserId == id).Select(po => new OrderHistoryDTO
+            {
+                OrderId = po.OrderId,
+
+                TotalAmount = po.TotalAmount,
+                PaymentMethod = po.PaymentMethod,
+                PaymentStatus = po.PaymentStatus,
+                PaymentDate = po.PaymentDate,
+
+                bookingDTO = new BookingDTO
+                {
+                    BookingId = po.Booking.BookingId,
+                    pathDTO = new PathDTO
+                    {
+                        PathName = po.Booking.Path.PathName
+                    }
+                }
+
+
+
+            }).ToList();
+
+
+
+            return Ok(userHistory);
+
+        }
     }
 }

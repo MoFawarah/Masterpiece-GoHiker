@@ -28,13 +28,13 @@ function initPayPalButton() {
         onApprove: function(data, actions) {
             return actions.order.capture().then(function(orderData) {
                 console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
-
+        
                 const transactionId = orderData.id;
                 localStorage.setItem("transactionId", transactionId);
-
+        
                 let url = `https://localhost:44360/api/PathOrder/UpdateOrder/${orderId}`
-
-                //from body update api method
+        
+                // From body update API method
                 fetch(url, {
                     method: 'PUT',
                     headers: {
@@ -46,7 +46,7 @@ function initPayPalButton() {
                 })
                 .then(response => {
                     if (response.ok) {
-                        
+                    
                         localStorage.removeItem('orderId');
                         localStorage.removeItem('TotalPrice');
                         localStorage.removeItem('PaymentMethod');
@@ -55,23 +55,29 @@ function initPayPalButton() {
                         localStorage.removeItem('pathId');
                         localStorage.removeItem('phoneNumber');
                         localStorage.removeItem('pricePerPerson');
-
-                        console.log('Order updated successfully');
+        
+                    
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Order Confirmed',
+                            text: 'Get ready for a memorable hiking adventure!',
+                            confirmButtonColor: '#13357b',
+                        }).then(() => {
+                            window.location.replace("/FrontEnd/index.html");
+                        });
+        
                     } else {
                         alert('Failed to update order');
                     }
                 })
-                
-                   
-
-
-                
-                // Show a success message
+                .catch(err => console.error('Failed to update order:', err));
+        
+                // Show a success message in the DOM as a fallback
                 const element = document.getElementById('paypal-button-container');
                 element.innerHTML = '<h3>Thank you for your payment!</h3>';
-                window.location.href = "index.html";
             });
         },
+        
 
         onError: function(err) {
             console.error('PayPal Error:', err);
